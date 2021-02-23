@@ -2,8 +2,30 @@ const fs = require('fs');
 const path = require('path');
 var http = require('http');
 const qs = require('querystring');
+var unirest = require("unirest");
+
+function google_image_search(url){
+
+    var req = unirest("GET", "https://google-reverse-image-search.p.rapidapi.com/imgSearch");
+
+    req.query({
+        "url": url
+    });
+
+    req.headers({
+        "x-rapidapi-key": "02e1b0da87mshf75b2d13974cc40p1451d0jsnf2044bbd6cdf",
+        "x-rapidapi-host": "google-reverse-image-search.p.rapidapi.com",
+        "useQueryString": true
+    });
 
 
+    req.end(function (res) {
+        if (res.error) throw new Error(res.error);
+
+        console.log(res.body);
+    });
+
+}
 function postHandler(request, response) {
     let reqBody = '';
 
@@ -46,6 +68,7 @@ function postHandler(request, response) {
                 const data = JSON.parse(str)
                 let img = data.images[random_nr % data.images.length].url
                 response.writeHead(200, {'Content-Type': 'text/html'})
+                google_image_search(image);
                 response.end(`<img src=${img}  alt="Random image">`);
             });
         }).end(reqBody);
