@@ -44,8 +44,7 @@ function postHandler(request, response) {
             });
             res.on('end', function () {
                 const data = JSON.parse(str)
-                console.log(random_nr)
-                let img = data.images[(data.images.length - 1)  % random_nr + 1].url
+                let img = data.images[random_nr % data.images.length].url
                 response.writeHead(200, {'Content-Type': 'text/html'})
                 response.end(`<img src=${img}  alt="Random image">`);
             });
