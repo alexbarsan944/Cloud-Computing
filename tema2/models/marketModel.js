@@ -3,6 +3,9 @@ let market = require('../db/data')
 async function getByIdModel(id) {
     return new Promise((resolve, reject) => {
         const marketObj = market.find((p) => p.id === id)
+        if (marketObj === undefined) {
+            resolve('Not found')
+        }
         resolve(marketObj)
     })
 }
@@ -16,14 +19,21 @@ async function getAllModel() {
 async function getAllStatsModel(id) {
     return new Promise((resolve, reject) => {
         const marketObj = market.find((p) => p.id === id)
-        resolve(marketObj['statistics'])
+        console.log(marketObj)
+        if (marketObj['statistics'] === undefined) {
+            resolve('Not found')
+        } else
+            resolve(marketObj['statistics'])
     })
 }
 
 async function getStatsByIdModel(id, stat_id) {
     return new Promise((resolve, reject) => {
         const marketObj = market.find((p) => p.id === id)
-        resolve(marketObj['statistics'][stat_id])
+        if (marketObj['statistics'][stat_id] === undefined) {
+            resolve('Not found')
+        } else
+            resolve(marketObj['statistics'][stat_id])
     })
 }
 

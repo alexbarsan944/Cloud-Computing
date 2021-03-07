@@ -2,7 +2,6 @@ const http = require('http')
 const controller = require('/Users/alexandrubarsan/Documents/GitHub/Cloud-Computing/tema2/controllers/marketController.js')
 const routes = require('/Users/alexandrubarsan/Documents/GitHub/Cloud-Computing/tema2/routes/route.js')
 const model = require('./models/marketModel')
-// TODO : fix get special cases
 
 const server = http.createServer((req, res) => {
     if (req.method === 'GET') {

@@ -5,15 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5e82777-b0f9-483c-b994-28991cc5e79c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tema2/controllers/marketController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tema2/db/data.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tema2/models/marketModel.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tema2/routes/route.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tema2/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tema1/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/tema1/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tema1/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/tema1/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tema1/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/tema1/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tema2/controllers/marketController.js" beforeDir="false" afterPath="$PROJECT_DIR$/tema2/controllers/marketController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tema2/models/marketModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/tema2/models/marketModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tema2/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/tema2/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tema2/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/tema2/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tema2/routes/route.js" beforeDir="false" afterPath="$PROJECT_DIR$/tema2/routes/route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tema2/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/tema2/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,12 +77,16 @@
     <configuration name="marketModel.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/tema2/models/marketModel.js" working-dir="$PROJECT_DIR$/tema2/models">
       <method v="2" />
     </configuration>
+    <configuration name="route.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/tema2/routes/route.js" working-dir="$PROJECT_DIR$/tema2/routes">
+      <method v="2" />
+    </configuration>
     <configuration name="server.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/tema2/server.js" working-dir="$PROJECT_DIR$/tema2">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Node.js.server.js" />
+        <item itemvalue="Node.js.route.js" />
         <item itemvalue="Node.js.marketController.js" />
         <item itemvalue="Node.js.marketModel.js" />
         <item itemvalue="Node.js.app.js" />
@@ -107,7 +112,8 @@
       <workItem from="1614947653038" duration="375000" />
       <workItem from="1614948053346" duration="6568000" />
       <workItem from="1614977474902" duration="1735000" />
-      <workItem from="1615029166977" duration="15252000" />
+      <workItem from="1615029166977" duration="15870000" />
+      <workItem from="1615102285431" duration="5934000" />
     </task>
     <servers />
   </component>
