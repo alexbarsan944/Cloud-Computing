@@ -1,0 +1,431 @@
+{
+	"info": {
+		"_postman_id": "cc88c4d2-b12d-4b62-9879-db6dd4bc80dd",
+		"name": "MarketCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getMarket",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:4444/market",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4444",
+					"path": [
+						"market"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getMarket{id}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:4444/market/2",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4444",
+					"path": [
+						"market",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getMarket{id}/statistics",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:4444/market/2/statistics",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4444",
+					"path": [
+						"market",
+						"2",
+						"statistics"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getMarket{id}/statistics/{id}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:4444/market/2/statistics/2",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4444",
+					"path": [
+						"market",
+						"2",
+						"statistics",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getMarket{id}/statistics/{id} - Data not found.",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:4444/market/2/statistics/5",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4444",
+					"path": [
+						"market",
+						"2",
+						"statistics",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getMarket{id}/statistics/{id} - Route not found.",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:4444/market/abc",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4444",
+					"path": [
+						"market",
+						"abc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "postMarket",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"name\": \"GOOGL\",\n        \"CEO\": \"Sundar Pichai\",\n        \"technicals\": \"Buy\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:4444/market",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4444",
+					"path": [
+						"market"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "postMarket/{id}",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"name\": \"GOOGL\",\n        \"CEO\": \"Sundar Pichai\",\n        \"technicals\": \"Buy\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:4444/market/2",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4444",
+					"path": [
+						"market",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "postMarket{id}/statistics",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "      {\n        \"Date\": \"Mar 06, 2021\",\n        \"Open\": \"121.75\",\n        \"High\": \"123.60\",\n        \"Low\": \"118.62\",\n        \"Close\": \"120.13\"\n      }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:4444/market/2/statistics",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4444",
+					"path": [
+						"market",
+						"2",
+						"statistics"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "postMarket/{id}/statistics/{id}",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"name\": \"GOOGL\",\n        \"CEO\": \"Sundar Pichai\",\n        \"technicals\": \"Buy\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:4444/market/1/statistics/1",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4444",
+					"path": [
+						"market",
+						"1",
+						"statistics",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteMarket/{id}- OK",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"name\": \"GOOGL\",\n        \"CEO\": \"Sundar Pichai\",\n        \"technicals\": \"Buy\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:4444/market/2",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4444",
+					"path": [
+						"market",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteMarket/{id}/statistics/{id} - OK",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"name\": \"GOOGL\",\n        \"CEO\": \"Sundar Pichai\",\n        \"technicals\": \"Buy\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:4444/market/2/statistics/5",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4444",
+					"path": [
+						"market",
+						"2",
+						"statistics",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteMarket/ - Not allowed",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"name\": \"GOOGL\",\n        \"CEO\": \"Sundar Pichai\",\n        \"technicals\": \"Buy\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:4444/market/",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4444",
+					"path": [
+						"market",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteMarket/{id}/statistics - Not allowed",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"name\": \"GOOGL\",\n        \"CEO\": \"Sundar Pichai\",\n        \"technicals\": \"Buy\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:4444/market/2/statistics",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4444",
+					"path": [
+						"market",
+						"2",
+						"statistics"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteMarket/{id}/statistics/{id} - Not found",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"name\": \"GOOGL\",\n        \"CEO\": \"Sundar Pichai\",\n        \"technicals\": \"Buy\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:4444/market/1/statistics/1",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4444",
+					"path": [
+						"market",
+						"1",
+						"statistics",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
