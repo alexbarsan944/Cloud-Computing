@@ -20,7 +20,6 @@ async function getAllModel() {
 async function getAllStatsModel(id) {
     return new Promise((resolve, reject) => {
         const marketObj = market.find((p) => p.id === id)
-        console.log(marketObj)
         if (marketObj['statistics'] === undefined) {
             resolve('Not found')
         } else
@@ -41,7 +40,7 @@ async function getStatsByIdModel(id, stat_id) {
     })
 }
 
-async function appendToJson(filename, content) {
+async function appendToJson(filename, content) { // TODO: get market ID from req
     let fileString = fs.readFileSync(filename, "utf-8");
     let exists = market.find((p) => p.id === content['id'])
     if (exists === undefined) { // doesn't already exist in DB
@@ -56,6 +55,45 @@ async function appendToJson(filename, content) {
         return 'ID already exists'
 }
 
+async function deleteStatModel(filename, req) {
+    let statsId = req.url.split('/')[4]
+    let marketId = req.url.split('/')[2]
+    let fileString = fs.readFileSync(filename, "utf-8");
+    let marketsObj = JSON.parse(fileString);
+    let objToDelete = await getStatsByIdModel(marketId, statsId)
+    if (objToDelete === 'Not found') return objToDelete
+    else {
+        let idx1 = marketsObj.indexOf(marketsObj.find((p) => p.id === marketId))
+        let idx2 = marketsObj[idx1].statistics.indexOf(marketsObj.find((p) => p.ID === statsId))
+        marketsObj[idx1].statistics.splice(idx2, 1)
+        fs.writeFileSync(filename, JSON.stringify(marketsObj), 'utf8', (err) => {
+            if (err) {
+                console.log(err)
+            }
+        })
+        return 'Stat deleted successfully'
+    }
+}
+
+async function deleteMarketIdModel(filename, req) {
+    let marketId = req.url.split('/')[2]
+    let fileString = fs.readFileSync(filename, "utf-8");
+    let marketsObj = JSON.parse(fileString);
+
+    let marketIdToDelete = await getByIdModel(marketId)
+    if (marketIdToDelete === 'Not found') return marketIdToDelete
+    else {
+        let idx = marketsObj.indexOf(marketsObj.find((p) => p.id === marketId))
+        marketsObj.splice(idx, 1)
+        fs.writeFileSync(filename, JSON.stringify(marketsObj), 'utf8', (err) => {
+            if (err) {
+                console.log(err)
+            }
+        })
+        return 'Stock deleted successfully'
+    }
+}
+
 async function appendStats(filename, content, req) {
     let fileString = fs.readFileSync(filename, "utf-8");
     let statsId = req.url.split('/')[4]
@@ -65,7 +103,6 @@ async function appendStats(filename, content, req) {
         return 'ID already exists'
     } else {
         let existsStat = existsStock['statistics']
-        console.log(existsStat)
         if (existsStat === undefined) {  // undefined daca stock ul nu are 'statistics'
             return "Stats don't exist"
         } else {
@@ -80,7 +117,6 @@ async function appendStats(filename, content, req) {
                 })
             }
         }
-
     }
 }
 
@@ -110,5 +146,7 @@ module.exports = {
     getStatsByIdModel,
     appendToJson,
     appendStats,
-    getPostData
+    getPostData,
+    deleteStatModel,
+    deleteMarketIdModel
 }

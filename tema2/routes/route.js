@@ -1,6 +1,6 @@
 const controller = require("../controllers/marketController")
 const postController = require("../controllers/postMarketController")
-
+const deleteController = require('../controllers/deleteMarketController')
 async function route(req, res) {
     console.log(req.method, req.url)
     switch (req.method) {
@@ -31,7 +31,24 @@ async function route(req, res) {
             else if (req.url.match(/^\/market\/\d+\/statistics\/\d+$/)) {
                 await postController.postStatistics(req, res)
             }
+            else{
+                console.log("Route not found.")
+                await controller.notFound(req, res)
+            }
             break
+        case "DELETE":
+            if (req.url === '/market' || req.url === '/market/') {
+                await deleteController.notAllowed(req, res)
+            }
+            else if(req.url.match(/^\/market\/\d+\/statistics$/)){
+                await deleteController.notAllowed(req, res)
+            }
+            else if (req.url.match(/^\/market\/\d+\/statistics\/\d+$/)) {
+                await deleteController.deleteStat(req, res)
+            }
+            else if (req.url.match(/^\/market\/\d+$/)) {
+                await deleteController.deleteMarketId(req, res)
+            }
     }
 }
 

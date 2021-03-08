@@ -24,8 +24,6 @@ async function postMarket(req, res) {
 async function postStatistics(req, res) {
     try {
         const body = await model.getPostData(req)
-
-
         let result = await model.appendStats(fileLocation, body, req)
         if (result === "ID already exists") {
             res.writeHead(409, {'Content-Type': 'application/json'})
