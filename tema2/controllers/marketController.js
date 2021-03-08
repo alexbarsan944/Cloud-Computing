@@ -41,6 +41,7 @@ async function getStatsById(req, res) {
     let stats_id = req.url.split('/')[4]
 
     let result = await model.getStatsByIdModel(market_id, stats_id)
+    console.log(result)
     if (result === 'Not found') {
         res.writeHead(404, {'Content-Type': 'application/json'})
         res.end(JSON.stringify('Data not found'))

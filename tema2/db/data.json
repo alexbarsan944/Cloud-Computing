@@ -4,7 +4,6 @@
     "name": "TSLA",
     "CEO": "Elon Musk",
     "technicals": "Sell"
-
   },
   {
     "id": "2",
@@ -13,6 +12,7 @@
     "technicals": "Sell",
     "statistics": [
       {
+        "ID": "1",
         "Date": "Mar 05, 2021",
         "Open": "120.98",
         "High": "121.94",
@@ -20,11 +20,20 @@
         "Close": "121.42"
       },
       {
+        "ID": "2",
         "Date": "Mar 04, 2021",
         "Open": "121.75",
         "High": "123.60",
         "Low": "118.62",
         "Close": "120.13"
+      },
+      {
+        "Date": "Mar 06, 2021",
+        "Open": "120.98",
+        "High": "121.94",
+        "Low": "117.57",
+        "Close": "121.42",
+        "ID": "3"
       }
     ]
   }

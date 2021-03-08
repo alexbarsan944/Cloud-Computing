@@ -1,10 +1,17 @@
 const http = require('http')
-const controller = require('/Users/alexandrubarsan/Documents/GitHub/Cloud-Computing/tema2/controllers/marketController.js')
-const routes = require('/Users/alexandrubarsan/Documents/GitHub/Cloud-Computing/tema2/routes/route.js')
-const model = require('./models/marketModel')
+let path = require('path');
+const routes = require(path.join(__dirname, '..', 'tema2', 'routes', 'route.js'))
 
 const server = http.createServer((req, res) => {
     if (req.method === 'GET') {
+        routes.route(req, res)
+    } else if (req.method === 'POST') {
+        routes.route(req, res)
+    } else if (req.method === 'PUT') {
+
+    } else if (req.method === 'PATCH') {
+
+    } else if (req.method === 'DELETE') {
         routes.route(req, res)
     } else {
         res.writeHead(404, {'ContentType': 'application/json'})
