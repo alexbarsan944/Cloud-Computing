@@ -28,7 +28,7 @@ async function route(req, res) {
             if (req.url === '/market' || req.url === '/market/') {
                 await postController.postMarket(req, res)
             }
-            else if (req.url.match(/^\/market\/\d+\/statistics\/\d+$/)) {
+            else if (req.url.match(/^\/market\/\d+\/statistics$/)) {
                 await postController.postStatistics(req, res)
             }
             else{
@@ -36,6 +36,7 @@ async function route(req, res) {
                 await controller.notFound(req, res)
             }
             break
+
         case "DELETE":
             if (req.url === '/market' || req.url === '/market/') {
                 await deleteController.notAllowed(req, res)

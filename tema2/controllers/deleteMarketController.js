@@ -6,7 +6,6 @@ const fileLocation = path.join(__dirname, '..', 'db', 'data.json');
 async function notAllowed(req, res) {
     res.writeHead(405, {'Content-Type': 'application/json'})
     return res.end(JSON.stringify('Method not allowed'))
-
 }
 
 async function deleteStat(req, res) {
@@ -19,7 +18,6 @@ async function deleteStat(req, res) {
             res.writeHead(200, {'Content-Type': 'application/json'})
             return res.end(JSON.stringify(result))
         }
-
     } catch (error) {
         console.log(error)
     }
@@ -35,7 +33,6 @@ async function deleteMarketId(req, res) {
             res.writeHead(200, {'Content-Type': 'application/json'})
             return res.end(JSON.stringify(result))
         }
-
     } catch (error) {
         console.log(error)
     }

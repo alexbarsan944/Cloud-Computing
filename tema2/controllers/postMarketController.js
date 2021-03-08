@@ -35,11 +35,17 @@ async function postStatistics(req, res) {
             res.writeHead(201, {'Content-Type': 'application/json'})
             return res.end(JSON.stringify(body))
         }
-
     } catch (error) {
         console.log(error)
     }
 }
 
 
-module.exports = {postMarket, postStatistics}
+async function notAllowed(req, res) {
+    res.writeHead(405, {'Content-Type': 'application/json'})
+    return res.end(JSON.stringify('Method not allowed'))
+
+}
+
+
+module.exports = {postMarket, postStatistics, notAllowed}
