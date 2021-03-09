@@ -21,11 +21,11 @@
       },
       {
         "ID": "2",
-        "Date": "Mar 04, 2021",
-        "Open": "121.75",
-        "High": "123.60",
-        "Low": "118.62",
-        "Close": "120.13"
+        "Date": "Mar 06, 2020",
+        "Open": "133.98",
+        "High": "133.94",
+        "Low": "133.57",
+        "Close": "133.42"
       },
       {
         "Date": "Mar 06, 2021",
@@ -62,8 +62,8 @@
     ]
   },
   {
-    "name": "GOOGL",
-    "CEO": "Sundar Pichai",
+    "name": "Binance",
+    "CEO": "Bob",
     "technicals": "Buy",
     "id": "0"
   }

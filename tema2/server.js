@@ -8,7 +8,7 @@ const server = http.createServer((req, res) => {
     } else if (req.method === 'POST') {
         routes.route(req, res)
     } else if (req.method === 'PUT') {
-
+        routes.route(req, res)
     } else if (req.method === 'PATCH') {
 
     } else if (req.method === 'DELETE') {

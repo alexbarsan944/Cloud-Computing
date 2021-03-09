@@ -1,6 +1,8 @@
 const controller = require("../controllers/marketController")
 const postController = require("../controllers/postMarketController")
 const deleteController = require('../controllers/deleteMarketController')
+const putController = require('../controllers/putMarketController')
+
 async function route(req, res) {
     console.log(req.method, req.url)
     switch (req.method) {
@@ -17,8 +19,7 @@ async function route(req, res) {
             } else if (req.url.match(/^\/market\/\d+$/)) {
                 await controller.getById(req, res)
                 console.log(req.url)
-            }
-            else{
+            } else {
                 console.log("Route not found.")
                 await controller.notFound(req, res)
             }
@@ -27,29 +28,40 @@ async function route(req, res) {
         case "POST":
             if (req.url === '/market' || req.url === '/market/') {
                 await postController.postMarket(req, res)
-            }
-            else if (req.url.match(/^\/market\/\d+\/statistics$/)) {
+            } else if (req.url.match(/^\/market\/\d+\/statistics$/)) {
                 await postController.postStatistics(req, res)
-            }
-            else{
+            } else {
                 console.log("Route not found.")
                 await controller.notFound(req, res)
             }
             break
+        case 'PUT':
+            if (req.url === '/market' || req.url === '/market/') {
+                await putController.notAllowed(req,res)
+            } else if (req.url.match(/^\/market\/\d+\/statistics$/)) {
+                await putController.notAllowed(req,res)
+            }else if (req.url.match(/^\/market\/\d+\/statistics\/\d+$/)){
+                await putController.putStatistics(req, res)
+            }
+            else if (req.url.match(/^\/market\/\d+$/)){
+                await putController.putMarket(req, res)
+            }else {
+                console.log("Route not found.")
+                await controller.notFound(req, res)
+            }
 
+            break
         case "DELETE":
             if (req.url === '/market' || req.url === '/market/') {
                 await deleteController.notAllowed(req, res)
-            }
-            else if(req.url.match(/^\/market\/\d+\/statistics$/)){
+            } else if (req.url.match(/^\/market\/\d+\/statistics$/)) {
                 await deleteController.notAllowed(req, res)
-            }
-            else if (req.url.match(/^\/market\/\d+\/statistics\/\d+$/)) {
+            } else if (req.url.match(/^\/market\/\d+\/statistics\/\d+$/)) {
                 await deleteController.deleteStat(req, res)
-            }
-            else if (req.url.match(/^\/market\/\d+$/)) {
+            } else if (req.url.match(/^\/market\/\d+$/)) {
                 await deleteController.deleteMarketId(req, res)
             }
+            break
     }
 }
 
