@@ -13,7 +13,7 @@
     "statistics": [
       {
         "ID": "1",
-        "Date": "Mar 05, 2021",
+        "Date": "Mar 6, 2010",
         "Open": "120.98",
         "High": "121.94",
         "Low": "117.57",
@@ -64,7 +64,7 @@
   {
     "name": "Binance",
     "CEO": "Bob",
-    "technicals": "Buy",
+    "technicals": "Neutral",
     "id": "0"
   }
 ]
