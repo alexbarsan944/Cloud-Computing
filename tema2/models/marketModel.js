@@ -103,6 +103,11 @@ async function putStats(filename, content, req) {
                 let marketsObj = JSON.parse(fileString);
                 let idx1 = marketsObj.indexOf(marketsObj.find((p) => p.id === marketId))
                 let idx2 = marketsObj[idx1].statistics.indexOf(marketsObj[idx1].statistics.find((p) => p.ID === statsId))
+                if (content.Date === undefined || content.Open === undefined || content.High === undefined
+                    || content.Low === undefined
+                    || content.Close === undefined) {
+                    return 'Not found'
+                }
                 try {
                     marketsObj[idx1].statistics[idx2].Date = content.Date
                     marketsObj[idx1].statistics[idx2].Open = content.Open
@@ -155,7 +160,6 @@ async function patchStatsModel(filename, content, req) {
 }
 
 
-
 async function putMarketModel(filename, body, req) {
     let marketId = req.url.split('/')[2]
     let fileString = fs.readFileSync(filename, "utf-8");
@@ -165,7 +169,9 @@ async function putMarketModel(filename, body, req) {
     if (marketIdToDelete === 'Not found') return marketIdToDelete
     else {
         let idx = marketsObj.indexOf(marketsObj.find((p) => p.id === marketId))
-
+        if (body.technicals === undefined || body.CEO === undefined || body.name === undefined) {
+            return 'Not found'
+        }
         try {
             marketsObj[idx].name = body.name
             marketsObj[idx].CEO = body.CEO
@@ -215,7 +221,7 @@ async function deleteStatModel(filename, req) {
     if (objToDelete === 'Not found') return objToDelete
     else {
         let idx1 = marketsObj.indexOf(marketsObj.find((p) => p.id === marketId))
-        let idx2 = marketsObj[idx1].statistics.indexOf(marketsObj.find((p) => p.ID === statsId))
+        let idx2 = marketsObj[idx1].statistics.indexOf(marketsObj[idx1].statistics.find((p) => p.ID === statsId))
         marketsObj[idx1].statistics.splice(idx2, 1)
         fs.writeFileSync(filename, JSON.stringify(marketsObj), 'utf8', (err) => {
             if (err) {

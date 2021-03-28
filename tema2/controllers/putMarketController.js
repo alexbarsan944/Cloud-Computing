@@ -13,7 +13,7 @@ async function putStatistics(req, res) {
         const body = await model.getPostData(req)
         let result = await model.putStats(fileLocation, body, req)
         if (result === "Not found") {
-            res.writeHead(409, {'Content-Type': 'application/json'})
+            res.writeHead(404, {'Content-Type': 'application/json'})
             return res.end('Not found')
         } else if (result === "Stats don't exist") {
             res.writeHead(409, {'Content-Type': 'application/json'})
@@ -35,7 +35,7 @@ async function putMarket(req, res) {
         const body = await model.getPostData(req)
         let result = await model.putMarketModel(fileLocation, body, req)
         if (result === "Not found") {
-            res.writeHead(409, {'Content-Type': 'application/json'})
+            res.writeHead(404, {'Content-Type': 'application/json'})
             return res.end('Not found')
         } else if (result === "Stats don't exist") {
             res.writeHead(409, {'Content-Type': 'application/json'})
