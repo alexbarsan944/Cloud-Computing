@@ -1,0 +1,27 @@
+{
+    "name": "helloworld",
+    "description": "Simple hello world sample in Node",
+    "version": "1.0.0",
+    "private": true,
+    "main": "index.js",
+    "scripts": {
+        "dev": "nodemon index.js",
+        "start": "node index.js",
+        "compile": "gcloud builds submit --tag gcr.io/cloudcomputin2021/rest",
+        "run": "gcloud run deploy --image gcr.io/cloudcomputin2021/rest --platform managed"
+    },
+    "engines": {
+        "node": ">= 12.0.0"
+    },
+    "author": "Google LLC",
+    "license": "Apache-2.0",
+    "dependencies": {
+        "ejs": "^3.1.6",
+        "express": "^4.17.1",
+        "google-auth-library": "^7.0.3",
+        "mysql": ""
+    },
+    "devDependencies": {
+        "cookie-parser": "^1.4.5"
+    }
+}

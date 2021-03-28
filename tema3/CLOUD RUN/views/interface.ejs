@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="EN">
+
+<head>
+    <title style="display:none">My page</title>
+
+    <style style="display:none">
+        * {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: repeating-linear-gradient(rgba(134, 107, 107, 0.9), rgba(134, 123, 123, 0.9) 7px);
+            font-size: 30px;
+            font-family: Sofia;
+            color: white;
+            text-shadow: 1px 1px black;
+        }
+        
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+        }
+        
+        .containers {
+            display: flex;
+            justify-content: space-around;
+            flex-grow: inherit;
+            width: 90vw;
+        }
+        
+        .page-header {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+        }
+        
+        input[type=text] {
+            min-width: 500px;
+            min-height: 250px;
+            border-radius: 10px;
+            border: solid 3px black;
+        }
+        
+        input[type=submit] {
+            min-width: 200px;
+            min-height: 70px;
+            border-radius: 10px;
+            border: solid 3px black;
+        }
+
+        #response {
+            min-width: 500px;
+            min-height: 250px;
+        }
+    </style>
+    <link rel="stylesheet" href="style1.css">
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <header class="page-header">
+            <H1>
+                The greatest lyric rating system on google cloud
+            </H1>
+            <p>Please, paste your lyrics in the bin and click submit to find you lyrics score</p>
+        </header>
+        <main class="containers">
+            <form method = 'POST'>
+                <label for="lyrics">Input your lyrics:</label><br>
+                <input type="text" id="lyrics" name="lyrics"><br>
+                <input type="submit" value="Submit">
+            </form>
+
+
+            <div id="response">
+                <p id="response_text">Your score is: <span id="special"></span></p>
+            </div>
+
+        </main>
+        <footer class="page-footer">
+            <p>The last entry by <%= user.name%>
+                was at <%= entries.time %> and it was the
+                    <%= entries.count %>-th entry submitted to this site</p>
+            <a href="/logout">Sign Out</a>
+
+        </footer>
+    </div>
+</body>
+
+</html>
