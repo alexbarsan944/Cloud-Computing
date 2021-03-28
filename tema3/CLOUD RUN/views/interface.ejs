@@ -54,7 +54,7 @@
             border-radius: 10px;
             border: solid 3px black;
         }
-
+        
         #response {
             min-width: 500px;
             min-height: 250px;
@@ -73,7 +73,7 @@
             <p>Please, paste your lyrics in the bin and click submit to find you lyrics score</p>
         </header>
         <main class="containers">
-            <form method = 'POST'>
+            <form method='get' action='/rate'>
                 <label for="lyrics">Input your lyrics:</label><br>
                 <input type="text" id="lyrics" name="lyrics"><br>
                 <input type="submit" value="Submit">
@@ -81,14 +81,18 @@
 
 
             <div id="response">
-                <p id="response_text">Your score is: <span id="special"></span></p>
+                <p id="response_text">Your score is:
+                    <%= entries.score %>
+                </p>
             </div>
 
         </main>
         <footer class="page-footer">
-            <p>The last entry by <%= user.name%>
-                was at <%= entries.time %> and it was the
-                    <%= entries.count %>-th entry submitted to this site</p>
+            <p>The last entry by
+                <%= user.name%>
+                    was at
+                    <%= entries.time %> and it was the
+                        <%= entries.count %>-th entry submitted to this site</p>
             <a href="/logout">Sign Out</a>
 
         </footer>

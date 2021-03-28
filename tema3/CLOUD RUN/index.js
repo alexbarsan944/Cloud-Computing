@@ -14,10 +14,11 @@ con.connect((err) => {
     console.log('Connection established');
 });
 
-
+const fetch = require("node-fetch");
 const express = require('express');
 const app = express();
 var cookieParser = require('cookie-parser')
+var qs = require('qs');
 
 app.set('view engine', 'ejs');
 app.use(express.json());
@@ -39,7 +40,10 @@ app.get('/login', (req, res) => {
     res.render('login');
 })
 
+app.post('/get_score', async(req, res) => {
 
+
+})
 
 app.post('/login', (req, res) => {
     let token = req.body.JWT;
@@ -96,7 +100,25 @@ function checkAuth(req, res, next) {
 
 }
 
-app.get('/rate', checkAuth, (req, res) => {
+app.get('/rate', checkAuth, async(req, res) => {
+    let url = qs.parse(req.url)
+    value = url['/rate?lyrics']
+    score2 = '-'
+    console.log(url)
+    console.log(value)
+    if (value != undefined) {
+        const body = { lyrics: value };
+        console.log(value)
+        console.log(body)
+        const response = await fetch('https://cloudcomputin2021.nw.r.appspot.com/?lyrics=' + value, {
+                method: 'post',
+                headers: { 'Content-Type': 'application/json' }
+            })
+            .then(res => res.json())
+            .then(json => score2 = json);
+
+    }
+    console.log(score2)
     let user = req.user;
 
     con.query('use projectCC', (err, rows) => {
@@ -110,7 +132,7 @@ app.get('/rate', checkAuth, (req, res) => {
                             count_value = rows2[0].b;
                             console.log(count_value);
                             console.log(time_value);
-                            var entryData = { time: time_value, count: count_value };
+                            var entryData = { time: time_value, count: count_value, score: score2.score };
                             res.render('interface.ejs', { entries: entryData, user: user });
                         }
                     });
@@ -118,6 +140,7 @@ app.get('/rate', checkAuth, (req, res) => {
             });
 
     });
+
 
 });
 

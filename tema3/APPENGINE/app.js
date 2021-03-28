@@ -19,7 +19,7 @@ app.post('/', async(req, res) => {
     text = url['/?lyrics']
     x = await f()
     console.log(x)
-    res.end('{ magnitude: ' + x.magnitude + ', score: ' + x.score + ' }')
+    res.end(JSON.stringify(x))
 })
 
 const language = require('@google-cloud/language');
