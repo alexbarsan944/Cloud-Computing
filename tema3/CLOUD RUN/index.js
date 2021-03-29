@@ -101,16 +101,21 @@ function checkAuth(req, res, next) {
 }
 
 app.get('/rate', checkAuth, async(req, res) => {
+
     let url = qs.parse(req.url)
     value = url['/rate?lyrics']
     score2 = '-'
     console.log(url)
     console.log(value)
     if (value != undefined) {
+        response = await fetch('https://europe-west2-cloudcomputin2021.cloudfunctions.net/insert_row', {
+            method: 'get'
+        })
+
         const body = { lyrics: value };
         console.log(value)
         console.log(body)
-        const response = await fetch('https://cloudcomputin2021.nw.r.appspot.com/?lyrics=' + value, {
+        response = await fetch('https://cloudcomputin2021.nw.r.appspot.com/?lyrics=' + value, {
                 method: 'post',
                 headers: { 'Content-Type': 'application/json' }
             })
@@ -123,19 +128,17 @@ app.get('/rate', checkAuth, async(req, res) => {
 
     con.query('use projectCC', (err, rows) => {
         if (!err)
-            con.query('SELECT max(done_at) as a FROM logging', (err, rows) => {
+            con.query('SELECT * from information', (err, rows) => {
                 if (!err) {
-                    time_value = rows[0].a;
-                    con.query('SELECT count(id) as b FROM logging', (err, rows2) => {
-                        if (!err) {
-                            console.log('Data received from Db:');
-                            count_value = rows2[0].b;
-                            console.log(count_value);
-                            console.log(time_value);
-                            var entryData = { time: time_value, count: count_value, score: score2.score };
-                            res.render('interface.ejs', { entries: entryData, user: user });
-                        }
-                    });
+                    time_value = rows[0].last_submit;
+
+                    console.log('Data received from Db:');
+                    count_value = rows[0].total_submits;
+                    console.log(count_value);
+                    console.log(time_value);
+                    var entryData = { time: time_value, count: count_value, score: score2.score };
+                    res.render('interface.ejs', { entries: entryData, user: user });
+
                 }
             });
 

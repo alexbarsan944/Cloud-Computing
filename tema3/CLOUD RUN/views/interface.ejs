@@ -26,7 +26,7 @@
             display: flex;
             justify-content: space-around;
             flex-grow: inherit;
-            width: 90vw;
+            width: 80vw;
         }
         
         .page-header {
@@ -59,6 +59,10 @@
             min-width: 500px;
             min-height: 250px;
         }
+        
+        .page-footer {
+            flex-direction: column;
+        }
     </style>
     <link rel="stylesheet" href="style1.css">
 </head>
@@ -70,7 +74,8 @@
             <H1>
                 The greatest lyric rating system on google cloud
             </H1>
-            <p>Please, paste your lyrics in the bin and click submit to find you lyrics score</p>
+            <p>Please, paste your lyrics in the bin and click submit <br> to find out how positive or negative are them.<br> Values range from -1 to 1
+            </p>
         </header>
         <main class="containers">
             <form method='get' action='/rate'>
@@ -88,12 +93,12 @@
 
         </main>
         <footer class="page-footer">
-            <p>The last entry by
-                <%= user.name%>
-                    was at
-                    <%= entries.time %> and it was the
-                        <%= entries.count %>-th entry submitted to this site</p>
-            <a href="/logout">Sign Out</a>
+            <p>HELLO
+                <%= user.name%> - <br><a href="/logout"> Sign Out</a> </p>
+            <p> The last entry was at
+                <%= entries.time %> and it was the
+                    <%= entries.count %>-th entry submitted to this site</p>
+
 
         </footer>
     </div>
