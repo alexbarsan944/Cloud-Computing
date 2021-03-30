@@ -18,7 +18,6 @@ exports.helloWorld = (req, res) => {
             console.log('Error connecting to Db');
             return;
         }
-        console.log("ghsdjkghdjkghjkd");
         con.query('use projectCC', (err, rows) => {
             if (!err)
                 con.query('SELECT max(done_at) as a FROM logging', (err, rows) => {

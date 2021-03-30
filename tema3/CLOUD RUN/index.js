@@ -1,24 +1,19 @@
 const mysql = require('mysql');
-
-const con = mysql.createConnection({
-    host: '34.78.154.15',
-    user: 'stupid',
-    password: 'stupid',
-});
-
-con.connect((err) => {
-    if (err) {
-        console.log('Error connecting to Db');
-        return;
-    }
-    console.log('Connection established');
-});
-
+var path = require("path");
 const fetch = require("node-fetch");
 const express = require('express');
 const app = express();
 var cookieParser = require('cookie-parser')
 var qs = require('qs');
+
+var data = require(path.resolve('env/secrets.js'))
+
+const con = mysql.createConnection({
+    host: data.host,
+    user: data.user,
+    password: data.password,
+});
+let CLIENT_ID = data.CLIENT_ID
 
 app.set('view engine', 'ejs');
 app.use(express.json());
@@ -27,9 +22,17 @@ app.use(express.urlencoded({
     extended: true
 }))
 
-const { OAuth2Client } = require('google-auth-library');
-let CLIENT_ID = '203351277928-tt014ggtqeqsm3asbodcdafg8i4r95sl.apps.googleusercontent.com';
+const {OAuth2Client} = require('google-auth-library');
 const client = new OAuth2Client(CLIENT_ID);
+
+
+con.connect((err) => {
+    if (err) {
+        console.log('Error connecting to Db');
+        return;
+    }
+    console.log('Connection established');
+});
 
 
 app.get('/', (req, res) => {
@@ -40,10 +43,6 @@ app.get('/login', (req, res) => {
     res.render('login');
 })
 
-app.post('/get_score', async(req, res) => {
-
-
-})
 
 app.post('/login', (req, res) => {
     let token = req.body.JWT;
@@ -100,25 +99,25 @@ function checkAuth(req, res, next) {
 
 }
 
-app.get('/rate', checkAuth, async(req, res) => {
+app.get('/rate', checkAuth, async (req, res) => {
 
     let url = qs.parse(req.url)
     value = url['/rate?lyrics']
     score2 = '-'
     console.log(url)
     console.log(value)
-    if (value != undefined) {
+    if (value !== undefined) {
         response = await fetch('https://europe-west2-cloudcomputin2021.cloudfunctions.net/insert_row', {
             method: 'get'
         })
 
-        const body = { lyrics: value };
+        const body = {lyrics: value};
         console.log(value)
         console.log(body)
         response = await fetch('https://cloudcomputin2021.nw.r.appspot.com/?lyrics=' + value, {
-                method: 'post',
-                headers: { 'Content-Type': 'application/json' }
-            })
+            method: 'post',
+            headers: {'Content-Type': 'application/json'}
+        })
             .then(res => res.json())
             .then(json => score2 = json);
 
@@ -136,8 +135,8 @@ app.get('/rate', checkAuth, async(req, res) => {
                     count_value = rows[0].total_submits;
                     console.log(count_value);
                     console.log(time_value);
-                    var entryData = { time: time_value, count: count_value, score: score2.score };
-                    res.render('interface.ejs', { entries: entryData, user: user });
+                    var entryData = {time: time_value, count: count_value, score: score2.score};
+                    res.render('interface.ejs', {entries: entryData, user: user});
 
                 }
             });
