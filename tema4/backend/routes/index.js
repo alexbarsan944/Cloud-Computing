@@ -136,13 +136,13 @@ router.get('/clients/:clientId', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
-
+    console.log("ahfuahf");
     connection = new Connection(config);
     connection.connect((none) => {
         username = "sad"
         password = "sadder"
         token = req.headers.jwt;
-        jwt.verify(token, 'secretKey', function (err, decoded) {
+        jwt.verify(token, 'secretKey', function(err, decoded) {
             username = decoded.username;
             password = decoded.password;
         });
@@ -153,7 +153,7 @@ router.post('/login', (req, res) => {
         // Read all rows from table
         const request = new Request(
             "SELECT id FROM clienti WHERE username='" + username + "' and password='" + password + "'",
-            (err, rowCount) => {
+            (err, rowCount, rows) => {
                 if (err) {
                     console.error(err.message);
                     res.status(500).json({ error: "Database error." });
@@ -163,20 +163,14 @@ router.post('/login', (req, res) => {
                         res.status(404).json({ error: "Username or password not found/invalid." })
                         return
                     }
-
+                    res.status(200).json({ id: rows[0][0].value })
                 }
-            }
-        );
-        request.on("row", columns => {
-            data = {
-                id: columns[0].value
-            };
-            res.status(200).json(data)
-        });
+            });
+
         connection.execSql(request);
+
     });
 });
-
 router.post('/clients/:clientId/cards', (req, res) => {
     connection = new Connection(config);
     connection.connect((none) => {
@@ -289,7 +283,7 @@ router.get('/cards/:cardId', (req, res) => {
                         data = {
                             id: row[0].value,
                             id_client: row[1].value,
-                            sold: row[2].value,
+                            sold: row[2].valslue,
                             nr_card: row[3].value,
                             data_expirare: row[4].value,
                             nume_titular: row[5].value,
@@ -312,7 +306,7 @@ router.post('/pay', (req, res) => {
 
         let { from_nr_card, from_data_expirare, from_name, from_csv, to_nr_card, amount, } = req.query;
         money_sent = amount
-        console.log(from_nr_card, from_data_expirare, from_name, from_csv, to_nr_card, money_sent,)
+        console.log(from_nr_card, from_data_expirare, from_name, from_csv, to_nr_card, money_sent, )
 
         if (!from_nr_card) return res.status(400).json('from_nr_card cant be blank');
         if (!from_data_expirare) return res.status(400).json('from_data_expirare cant be blank');
@@ -320,7 +314,6 @@ router.post('/pay', (req, res) => {
         if (!from_csv) return res.status(400).json('from_csv be blank');
         if (!to_nr_card) return res.status(400).json('to_nr_card cant be blank');
         if (!money_sent) return res.status(400).json('money_sent cant be blank');
-
 
 
         const request = new Request(
@@ -351,7 +344,7 @@ router.post('/pay', (req, res) => {
                                 if (rowCount == 0)
                                     return res.status(404).json({ error: "No card with number " + to_nr_card })
                                 console.log(rows2[0][0].value)
-                                ///update out account
+                                    ///update out account
                                 const request3 = new Request(
                                     "UPDATE carduri SET sold = sold + " + money_sent + " WHERE nr_card = '" + to_nr_card + "'",
                                     (err, rowCount, rows3) => {
