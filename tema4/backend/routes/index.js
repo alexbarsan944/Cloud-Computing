@@ -38,8 +38,22 @@ const config = {
 router.post('/clients', (req, res) => {
     connection = new Connection(config);
     connection.connect((none) => {
-        let { name, id_card, age, username, password, } = req.query;
-        console.log(name, id_card, age, username, password)
+        var name, id_card, age, username, password, bad_token = false;
+        token = req.headers.jwt;
+        jwt.verify(token, 'secretKey', function (err, decoded) {
+            if (err) {
+                bad_token = true;
+            } else {
+                username = decoded.username;
+                password = decoded.password;
+                id_card = decoded.id_card;
+                name = decoded.name;
+                age = decoded.age;
+            }
+        });
+
+        if (bad_token) return res.status(400).json({ error: "JWT bad." })
+
 
         if (!name) return res.status(400).json('Name cant be blank');
         if (!id_card) return res.status(400).json('ID cant be blank');
@@ -100,12 +114,10 @@ router.post('/clients', (req, res) => {
 });
 
 router.get('/clients/:clientId', (req, res) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    
+
     connection = new Connection(config);
     connection.connect((none) => {
-
+        
         console.log(req.params.clientId);
         if (!req.params.clientId) return res.status(400).json('id cant be blank');
 
@@ -142,18 +154,20 @@ router.get('/clients/:clientId', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     connection = new Connection(config);
     connection.connect((none) => {
-        username = "sad"
-        password = "sadder"
+        var username, password, bad_token = false;
         token = req.headers.jwt;
         jwt.verify(token, 'secretKey', function (err, decoded) {
-            username = decoded.username;
-            password = decoded.password;
+            if (err) {
+                bad_token = true;
+            } else {
+                username = decoded.username;
+                password = decoded.password;
+            }
         });
 
+        if (bad_token) return res.status(400).json({ error: "JWT bad." })
         if (!username) return res.status(400).json('username cant be blank');
         if (!password) return res.status(400).json('password cant be blank');
 
@@ -181,9 +195,19 @@ router.post('/login', (req, res) => {
 router.post('/clients/:clientId/cards', (req, res) => {
     connection = new Connection(config);
     connection.connect((none) => {
+        var name, bad_token = false;
+        token = req.headers.jwt;
+        jwt.verify(token, 'secretKey', function (err, decoded) {
+            if (err) {
+                bad_token = true;
+            } else {
+                name = decoded.name;
+            }
+        });
+
+        if (bad_token) return res.status(400).json({ error: "JWT bad." })
+
         id_client = req.params.clientId
-        let { name, } = req.query;
-        console.log(id_client, name)
 
         if (!name) return res.status(400).json('Name cant be blank');
         if (!id_client) return res.status(400).json('ID cant be blank');
@@ -310,10 +334,24 @@ router.get('/cards/:cardId', (req, res) => {
 router.post('/pay', (req, res) => {
     connection = new Connection(config);
     connection.connect((none) => {
+        var from_nr_card, from_data_expirare, from_name, from_csv, to_nr_card, amount, bad_token = false;
+        token = req.headers.jwt;
+        jwt.verify(token, 'secretKey', function (err, decoded) {
+            if (err) {
+                bad_token = true;
+            } else {
+                from_nr_card = decoded.from_nr_card;
+                from_data_expirare = decoded.from_data_expirare;
+                from_name = decoded.from_name;
+                from_csv = decoded.from_csv;
+                to_nr_card = decoded.to_nr_card;
+                amount = decoded.amount;
+            }
+        });
 
-        let { from_nr_card, from_data_expirare, from_name, from_csv, to_nr_card, amount, } = req.query;
+        if (bad_token) return res.status(400).json({ error: "JWT bad." })
+
         money_sent = amount
-        console.log(from_nr_card, from_data_expirare, from_name, from_csv, to_nr_card, money_sent,)
 
         if (!from_nr_card) return res.status(400).json('from_nr_card cant be blank');
         if (!from_data_expirare) return res.status(400).json('from_data_expirare cant be blank');
@@ -393,7 +431,18 @@ router.post('/pay', (req, res) => {
 router.post('/cards/bancomat/add', (req, res) => {
     connection = new Connection(config);
     connection.connect((none) => {
-        let { nr_card, amount } = req.query;
+        var nr_card, amount, bad_token = false;
+        token = req.headers.jwt;
+        jwt.verify(token, 'secretKey', function (err, decoded) {
+            if (err) {
+                bad_token = true;
+            } else {
+                nr_card = decoded.nr_card;
+                amount = decoded.amount;
+            }
+        });
+
+        if (bad_token) return res.status(400).json({ error: "JWT bad." })
 
         if (!nr_card) return res.status(400).json('nr_card cant be blank');
         if (!amount) return res.status(400).json('amount cant be blank');
@@ -418,7 +467,17 @@ router.post('/cards/bancomat/add', (req, res) => {
 router.post('/cards/bancomat/extract', (req, res) => {
     connection = new Connection(config);
     connection.connect((none) => {
-        let { nr_card, amount } = req.query;
+        var nr_card, amount, bad_token = false;
+        token = req.headers.jwt;
+        jwt.verify(token, 'secretKey', function (err, decoded) {
+            if (err) {
+                bad_token = true;
+            } else {
+                nr_card = decoded.nr_card;
+                amount = decoded.amount;
+            }
+        });
+        if (bad_token) return res.status(400).json({ error: "JWT bad." })
 
         if (!nr_card) return res.status(400).json('nr_card cant be blank');
         if (!amount) return res.status(400).json('amount cant be blank');
