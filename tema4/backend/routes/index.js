@@ -1,9 +1,19 @@
 var express = require('express');
+const app = express();
+
 var router = express.Router();
+var jwt = require('jsonwebtoken');
+
+app.use(
+    express.urlencoded({
+        extended: true
+    })
+)
+
+app.use(express.json())
 
 const { Connection, Request } = require("tedious");
 
-const app = express();
 const config = {
     authentication: {
         options: {
@@ -31,7 +41,7 @@ router.post('/clients', (req, res) => {
         if (!name) return res.status(400).json('Name cant be blank');
         if (!id_card) return res.status(400).json('ID cant be blank');
         if (!age) return res.status(400).json('Age cant be blank');
-        if (!username) return res.status(400).json('Username cant be blank');
+        if (!username) return res.status(400).json('Username cant be blank1');
         if (!password) return res.status(400).json('Password cant be blank');
 
         var data = {
@@ -126,10 +136,16 @@ router.get('/clients/:clientId', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
+
     connection = new Connection(config);
     connection.connect((none) => {
-        let { username, password, } = req.query;
-        console.log(username, password)
+        username = "sad"
+        password = "sadder"
+        token = req.headers.jwt;
+        jwt.verify(token, 'secretKey', function (err, decoded) {
+            username = decoded.username;
+            password = decoded.password;
+        });
 
         if (!username) return res.status(400).json('username cant be blank');
         if (!password) return res.status(400).json('password cant be blank');
@@ -296,7 +312,7 @@ router.post('/pay', (req, res) => {
 
         let { from_nr_card, from_data_expirare, from_name, from_csv, to_nr_card, amount, } = req.query;
         money_sent = amount
-        console.log(from_nr_card, from_data_expirare, from_name, from_csv, to_nr_card, money_sent, )
+        console.log(from_nr_card, from_data_expirare, from_name, from_csv, to_nr_card, money_sent,)
 
         if (!from_nr_card) return res.status(400).json('from_nr_card cant be blank');
         if (!from_data_expirare) return res.status(400).json('from_data_expirare cant be blank');
@@ -335,7 +351,7 @@ router.post('/pay', (req, res) => {
                                 if (rowCount == 0)
                                     return res.status(404).json({ error: "No card with number " + to_nr_card })
                                 console.log(rows2[0][0].value)
-                                    ///update out account
+                                ///update out account
                                 const request3 = new Request(
                                     "UPDATE carduri SET sold = sold + " + money_sent + " WHERE nr_card = '" + to_nr_card + "'",
                                     (err, rowCount, rows3) => {
