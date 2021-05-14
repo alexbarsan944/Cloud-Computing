@@ -5,6 +5,8 @@ from datetime import timedelta
 
 from middleware.auth_decorator import login_required
 from dotenv import load_dotenv
+import routes.user_routes as user_routes
+
 load_dotenv()
 
 # App config
@@ -35,32 +37,21 @@ google = oauth.register(
 @login_required
 def hello_world():
     email = dict(session)['profile']['email']
-    return f'Hello, you are logged in as {email}!'
+    name = dict(session)['profile']['given_name']
+
+    return f'Hello {name}, you are logged in as {email}!'
 
 
-@app.route('/login')
+@app.route('/login', methods=['GET'])
 def login():
-    google = oauth.create_client('google')  # create the google oauth client
-    redirect_uri = url_for('authorize', _external=True)
-    return google.authorize_redirect(redirect_uri)
+    return user_routes.login_user(oauth)
+
+
+@app.route('/logout', methods=['POST'])
+def logout():
+    return user_routes.logout()
 
 
 @app.route('/authorize')
 def authorize():
-    google = oauth.create_client('google')  # create the google oauth client
-    token = google.authorize_access_token()  # Access token from google (needed to get user info)
-    resp = google.get('userinfo')
-    user_info = resp.json()
-    user = oauth.google.userinfo()  # uses openid endpoint to fetch user info
-    # Here you use the profile/user data that you got and query your database find/register the user
-    # and set ur own data in the session not the profile from google
-    session['profile'] = user_info
-    session.permanent = True
-    return redirect('/')
-
-
-@app.route('/logout')
-def logout():
-    for key in list(session.keys()):
-        session.pop(key)
-    return redirect('/')
+    return user_routes.authorize(oauth)
