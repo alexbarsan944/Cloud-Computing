@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b5e82777-b0f9-483c-b994-28991cc5e79c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tema2/controllers/putMarketController.js" beforeDir="false" afterPath="$PROJECT_DIR$/tema2/controllers/putMarketController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tema2/db/data.json" beforeDir="false" afterPath="$PROJECT_DIR$/tema2/db/data.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tema2/models/marketModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/tema2/models/marketModel.js" afterDir="false" />
-    </list>
+    <list default="true" id="b5e82777-b0f9-483c-b994-28991cc5e79c" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,7 +42,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="15.11.0" />
-    <property name="javascript.nodejs.core.library.typings.version" value="14.14.35" />
+    <property name="javascript.nodejs.core.library.typings.version" value="15.0.3" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/tema2" />
     <property name="nodejs.cucumber.cucumber_node_package_dir" value="" />
     <property name="nodejs_interpreter_path" value="node" />
@@ -116,6 +111,7 @@
       <workItem from="1615395932949" duration="12000" />
       <workItem from="1616402881805" duration="12000" />
       <workItem from="1616597861414" duration="34000" />
+      <workItem from="1621004061113" duration="41000" />
     </task>
     <servers />
   </component>
