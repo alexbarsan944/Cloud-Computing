@@ -1,0 +1,37 @@
+.discount-client {
+    margin: 20px;
+    width: 460px;
+    height: 260px;
+    background-image: linear-gradient(red, blue);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.fourth-btn-client {
+    background-color: #b80f0a;
+}
+
+.footer-client {
+    background-color: #d21f3c;
+}
+
+.header-client {
+    background-color: #5e1914;
+}
+
+.header_btn-client {
+    background-color: #b80f0a;
+}
+
+.btn-client {
+    background-color: #b80f0a;
+}
+
+.app-client {
+    background: url(https://cdn.hipwallpaper.com/i/58/66/Sh4AMZ.jpg) no-repeat center center fixed;
+    background-size: cover;
+}

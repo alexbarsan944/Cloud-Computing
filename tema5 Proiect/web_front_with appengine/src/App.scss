@@ -1,0 +1,236 @@
+* {
+    font-size: 22px;
+    color: whitesmoke;
+}
+
+footer {
+    bottom: 0vh;
+    position: fixed;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    width: 100vw;
+    height: 10vh;
+    background-color: #2ed21f;
+}
+
+header {
+    top: 0vh;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    width: 100vw;
+    height: 8vh;
+    background-color: #295e14;
+}
+
+.app {
+    top: 0vh;
+    position: fixed;
+    display: flex;
+    width: 100vw;
+    height: 90vh;
+    background: url(https://wallpapercave.com/wp/wp3129784.jpg) no-repeat center center fixed;
+    background-size: cover;
+}
+
+.sub_app {
+    top: 8vh;
+    position: fixed;
+    display: flex;
+    width: 100vw;
+    height: 82vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.header_btn {
+    margin-right: 10px;
+    margin-left: 10px;
+    font-size: 23px;
+    padding: 5px 20px;
+    border: 0;
+    background-color: #2db80a;
+    color: #fff;
+    border-radius: 3px;
+    height: 8vh;
+    transition: all 250ms ease-in-out;
+    cursor: pointer;
+    &:hover {
+        background-color: #d21f3c;
+    }
+    &:focus {
+        outline: none;
+    }
+}
+
+.btn {
+    margin: 20px;
+    padding: 5px 20px;
+    border: 0;
+    background-color: #2db80a;
+    color: #fff;
+    border-radius: 3px;
+    height: 8vh;
+    transition: all 250ms ease-in-out;
+    cursor: pointer;
+    &:hover {
+        background-color: #2386c8;
+    }
+    &:focus {
+        outline: none;
+    }
+}
+
+.trinity {
+    background-color: #162336;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 82vh;
+}
+
+.trinity_item {
+    padding-left: 16px;
+    padding-right: 10px;
+    border-left: solid 8px black;
+    display: flex;
+    align-self: stretch;
+}
+
+form {
+    width: 25vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+form label {
+    margin-top: 20px;
+}
+
+.icon {
+    height: 40px;
+    width: 40px;
+}
+
+.bussiness-form {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+input {
+    max-width: 25vw;
+    color: black;
+}
+
+.discount_container {
+    min-width: 500px;
+    max-height: 80vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.discount_container::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* Hide scrollbar for IE, Edge and Firefox */
+
+.discount_container {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.vertical-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.vertical-flex a {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.marker {
+    position: relative;
+    top: -30px;
+    left: -25px;
+    width: 50px;
+    height: 30px;
+}
+
+.marker:hover {
+    top: -90px;
+    left: -75px;
+    width: 150px;
+    height: 90px;
+}
+
+#map {
+    height: 200px;
+    width: 400px;
+}
+
+.shop-map {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+}
+
+.qr-code {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 400px;
+}
+
+.stores_container {
+    background-color: #162336;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 76vh;
+    width: 90vw;
+    -ms-overflow-style: none;
+}
+
+.stores_container::-webkit-scrollbar {
+    display: none;
+}
+
+.store {
+    background-color: #5e1914;
+    display: flex;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title_container {
+    padding-top: 1vh;
+    height: 5vh;
+    background-color: #162336;
+    text-align: center;
+    font-weight: 700;
+}

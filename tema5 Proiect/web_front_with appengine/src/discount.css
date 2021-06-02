@@ -1,0 +1,82 @@
+.discount {
+    margin: 20px;
+    width: 460px;
+    height: 260px;
+    background-color: #1eb80a;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.discount_store {
+    margin-bottom: 30px;
+    font-size: 50px;
+}
+
+.discount_second {
+    display: flex;
+    justify-content: space-between;
+    align-self: stretch;
+    width: 460;
+}
+
+.discount_third {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-self: stretch;
+    width: 460;
+}
+
+.category {
+    font-size: 30px;
+}
+
+.percent {
+    font-size: 30px;
+    font-weight: 900;
+    color: lightgreen;
+}
+
+.fourth-btn {
+    background-color: #d21f3c;
+    margin: 20px;
+    padding: 10px 20px;
+    border: 0;
+    color: #fff;
+    border-radius: 3px;
+    transition: all 250ms ease-in-out;
+    cursor: pointer;
+}
+
+.discount-bussiness {
+    margin: 20px;
+    width: 460px;
+    height: 170px;
+    background-image: linear-gradient(green, blue);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.percent-bussiness {
+    font-size: 30px;
+    font-weight: 900;
+    color: red;
+}
+
+.fourth-btn-bussiness {
+    background-color: green;
+    margin: 20px;
+    padding: 10px 20px;
+    border: 0;
+    color: #fff;
+    border-radius: 3px;
+    transition: all 250ms ease-in-out;
+    cursor: pointer;
+}
